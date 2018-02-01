@@ -1,15 +1,15 @@
 ---
 name: chatops.ansible_server_status
 action_ref: st2_chatops_aliases.server_status
-description: Show status for hosts (ansible ping module)
+description: Show status for stand (dev1,dev2,st1,st2)
 formats:
-  - display: "status <hosts>"
+  - display: "status <stand>"
     representation:
-      - "status {{ hosts }}"
-      - "ping {{ hosts }}"
+      - "status {{ stand }}"
+      - "ping {{ stand }}"
 result:
   format: |
-    Here is your status for `{{ execution.parameters.hosts }}` host(s): {~}
+    Here is your status for `{{ execution.parameters.stand }}` host(s): {~}
     ```{{ execution.result.stdout }}```
   extra:
     slack:
