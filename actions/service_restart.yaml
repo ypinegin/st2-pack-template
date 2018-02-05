@@ -1,0 +1,27 @@
+---
+name: service_restart
+description: Restart service on remote stand
+runner_type: local-shell-cmd
+entry_point: ""
+enabled: true
+parameters:
+  sudo:
+    description: "Run command with sudo"
+    type: boolean
+    immutable: true
+    default: false
+  kwarg_op:
+    immutable: true
+  cmd:
+    description: "Command to run"
+    type: string
+    immutable: true
+    default: "/opt/stackstorm/virtualenvs/ansible/bin/ansible dkron -i /etc/ansible/hosts.{{stand}} --become --module-name=systemd --args='name={{service_name}} state=restarted'"
+  stand:
+    description: "Ansible inventory file"
+    type: string
+    required: true
+  service_name:
+    description: "Service to restart"
+    type: string
+    required: true
